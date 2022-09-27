@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "command": "spago run",
+            "name": "spago run",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "spago test",
+            "name": "spago test",
+            "request": "launch",
+            "type": "node-terminal"
+        }
+    ]
+}
