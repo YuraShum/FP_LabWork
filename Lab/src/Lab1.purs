@@ -2,7 +2,7 @@ module Lab1 where
 
 import Prelude
 
-import Data.List.Types (List(..), (:))
+import Data.List.Types (List(..))
 import Effect (Effect)
 import Effect.Console (log)
 
@@ -23,20 +23,11 @@ null Nil = true
 null _ = false
 
 
--- Додання елементу в кінець списку
--- реалізація виконана через подвійний реверс 
--- списку, так як використовувати foldr не бажано (що дозволяє заповнення списку почнаючи з правої частини)
-snoc :: forall a. List a -> a -> List a
--- спочатку обертаємо масив та додаємо елемент за допомогою Cons
--- Потім виконуємо обернення масиву знову.
-snoc xs x = reverse $ Cons x $ reverse xs
 
--- реалізація методу реверс
-reverse :: List ~> List
-reverse = go Nil
-  where
-  go acc Nil = acc
-  go acc (x : xs) = go (x : acc) xs
+-- додання елементу в кінець списку за допомогою рекурсії
+snoc :: forall a. List a -> a -> List a
+snoc Nil x = singleton(x)
+snoc (Cons head tail) x = Cons head $ snoc tail x
 
 --Отримання довжини списку за допомогою рекурсії
 length :: forall a. List a -> Int 
@@ -51,8 +42,8 @@ lengthR (Cons head tail) currentCount = lengthR tail (currentCount  + 1)
 test :: Effect Unit
 test = do
   -- виведення результату 
-  log $ show $ singleton("2")
+  log $ show $ singleton("secondElement")
   log $ show $ null $ singleton("not null")
-  let a = Cons "1" $ singleton("2")
+  let a = Cons "firstElement" $ singleton("secondElement")
   log $ show $ snoc a "theLastElement"
   log $ show $ length a
