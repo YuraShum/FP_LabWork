@@ -35,7 +35,7 @@ length a = lengthR a 0
 
 lengthR :: forall a. List a -> Int -> Int
 lengthR Nil totalCount = totalCount
-lengthR (Cons head tail) currentCount = lengthR tail (currentCount  + 1)
+lengthR (Cons _ tail) currentCount = lengthR tail (currentCount  + 1)
 
 
 
