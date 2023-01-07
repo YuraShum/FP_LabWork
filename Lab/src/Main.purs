@@ -1,9 +1,9 @@
 module Main where
 
 import Prelude
-import Lab2 as Lab2
+import Lab3 as Lab3
 
 import Effect (Effect)
 
 main :: Effect Unit
-main = Lab2.test
+main = Lab3.test
